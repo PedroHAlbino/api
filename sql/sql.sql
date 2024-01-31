@@ -12,3 +12,17 @@ CREATE TABLE usuarios(
     senha varchar(100) not null ,
     criadoEm timestamp default current_timestamp()
 )ENGINE=InnoDB;
+
+CREATE TABLE seguidores(
+    usuarios_id int not null,
+    foreign key (usuarios_id)
+    references usuarios (id)
+    on delete cascade
+
+    seguidor_id int not null, 
+    foreign key (seguidor_id)
+    references usuarios (id)
+    on delete cascade
+
+    primary key (usuarios_id, seguidor_id)
+)ENGINE=InnoDB;
